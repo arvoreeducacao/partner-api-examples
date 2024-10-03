@@ -1,0 +1,632 @@
+{
+	"info": {
+		"_postman_id": "2b7d8bd2-c057-46da-a798-d0eb1e20ca07",
+		"name": "Árvore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2339773",
+		"_collection_link": "https://grey-crater-783679.postman.co/workspace/Collections~6b1cccad-abc7-48b1-8882-f8882a888834/collection/2339773-2b7d8bd2-c057-46da-a798-d0eb1e20ca07?action=share&source=collection_link&creator=2339773"
+	},
+	"item": [
+		{
+			"name": "Entidades",
+			"item": [
+				{
+					"name": "Listagem de entidades",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/entities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "",
+									"description": "Cursor da página seguinte",
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "",
+									"description": "Cursor da página anterior",
+									"disabled": true
+								},
+								{
+									"key": "entity_type",
+									"value": "",
+									"description": "Filtrar pelo tipo da entidade (Permitido por network, school ou class)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Descendentes de uma entidade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/entities/:reference_id/subtree",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"entities",
+								":reference_id",
+								"subtree"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "",
+									"description": "Cursor da página seguinte",
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "",
+									"description": "Cursor da página anterior",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID da entidade do lado do parceiro."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leitores de uma entidade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/entities/:entity_reference_id/readers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"entities",
+								":entity_reference_id",
+								"readers"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "",
+									"description": "Cursor da página seguinte",
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "",
+									"description": "Cursor da página anterior",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "entity_reference_id",
+									"value": "",
+									"description": "ID da entidade do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Professores de uma entidade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/entities/:entity_reference_id/teachers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"entities",
+								":entity_reference_id",
+								"teachers"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "",
+									"description": "Cursor da página seguinte",
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "",
+									"description": "Cursor da página anterior",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "entity_reference_id",
+									"value": "",
+									"description": "ID da entidade do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exibição de uma entidade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/entities/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"entities",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID da entidade do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar uma entidade",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Escola Exemplo\",\n  \"entity_type\": \"school\",\n  \"inep\": \"123456\",\n  \"degree\": \"F\",\n  \"state\": \"RS\",\n  \"city\": \"City example\",\n  \"reference_id\": \"reference_id\",\n  \"parent_reference_id\": \"parent_reference_id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/entities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar entidade",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Escola exemplo updated\",\n  \"degree\": \"F\",\n  \"state\": \"SP\",\n  \"city\": \"São Paulo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/entities/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"entities",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID da entidade do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leitores",
+			"item": [
+				{
+					"name": "Criar leitor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@reader.com\",\n  \"phone\": \"(00) 00000-0000\",\n  \"reference_id\": \"reference_id\",\n  \"entity_reference_id\": \"entity_reference_id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/readers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"readers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir um leitor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/readers/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"readers",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID do leitor do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar um leitor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Richard Miles\",\n  \"email\": \"richard.miles@reader.com\",\n  \"phone\": \"(00) 12345-6789\",\n  \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/readers/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"readers",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID do leitor do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir um leitor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/readers/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"readers",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID do leitor do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Professores",
+			"item": [
+				{
+					"name": "Criar um professor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@teacher.com\",\n  \"phone\": \"(00) 00000-0000\",\n  \"reference_id\": \"reference_id\",\n  \"entity_reference_id\": \"entity_reference_id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/teachers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar um professor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@teacher.com\",\n  \"phone\": \"(00) 00000-0000\",\n  \"reference_id\": \"reference_id\",\n  \"entity_reference_id\": \"entity_reference_id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/teachers/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"teachers",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID do professor do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir professor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/teachers/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"teachers",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID do professor do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir professor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/teachers/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"teachers",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID do professor do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SSO",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/authorize/:reference_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"authorize",
+								":reference_id"
+							],
+							"variable": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"description": "ID do lado do parceiro"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"var crypto = require('crypto-js')",
+					"",
+					"// Coloque as credenciais aqui",
+					"var access_key = 'coloque sua access_key';",
+					"var access_key_id = 'coloque sua access_key_id';",
+					"",
+					"var http_verb = pm.request.method.toUpperCase();",
+					"",
+					"var content_type = 'application/json';",
+					"var body = pm.request.body.raw || '';",
+					"var md5_digest = crypto.MD5(body);",
+					"var content_md5 = crypto.enc.Base64.stringify(md5_digest);",
+					"",
+					"var path = pm.request.url.getPath();",
+					"var query = pm.request.url.getQueryString();",
+					"if (query) {",
+					"    path += '?' + query;",
+					"}",
+					"",
+					"var date = new Date().toUTCString();",
+					"",
+					"var canonical_string = [http_verb, content_type, content_md5, path, date].join(',');",
+					"",
+					"var sha1_signature = crypto.HmacSHA1(canonical_string, access_key);",
+					"var signature = crypto.enc.Base64.stringify(sha1_signature);",
+					"",
+					"var auth_token = 'APIAuth ' + access_key_id + ':' + signature;",
+					"",
+					"",
+					"pm.request.headers.add({key: 'Content-Type', value: content_type});",
+					"pm.request.headers.add({key: 'Content-MD5', value: content_md5});",
+					"pm.request.headers.add({key: 'Date', value: date});",
+					"pm.request.headers.add({key: 'Authorization', value: auth_token});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

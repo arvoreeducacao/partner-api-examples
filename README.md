@@ -44,3 +44,15 @@ Para os exemplos de Javascript, instale os pacotes necessários com `npm install
 npm install
 node get_entity.js
 ```
+
+# Utilização da collection via Postman
+
+Para utilizar os arquivos armazenados na pasta `collection_files`, recomendamos o uso do Postman, pois eles foram construídos utilizando essa aplicação.
+
+1. Comece clicando no botão superior esquerdo `Import` e selecione os arquivos presentes na pasta `collection_files`.
+2. Clique no botão `Import` para finalizar o processo.
+3. Após importar, clique na pasta `Árvore` que foi criada e vá para a aba `Scripts` e então em `Pre-request`.
+4. Nesta aba será necessário inserir a `access_key` e a `access_key_id` da conta desejada.
+5. Salve as alterações.
+
+Pronto, agora você poderá utilizar os endpoints normalmente.
