@@ -12,8 +12,6 @@ Para rodar os exemplos de Elixir, altere as informações necessárias nos arqui
 
 ```shell
 elixir get_entity.exs
-
-elixir get_reader.exs
 ```
 
 Caso não deseje instalar Elixir/Erlang localmente, pode-se também rodar os exemplos usando um container docker.
@@ -21,7 +19,10 @@ Caso não deseje instalar Elixir/Erlang localmente, pode-se também rodar os exe
 Por exemplo, em um shell no diretório `/elixir`, execute:
 
 ```shell
-docker container run --rm -v $(pwd):/app/ hexpm/elixir:1.17.3-erlang-27.1-alpine-3.20.3 elixir get_entity.exs
+docker container run \
+    --rm -v $(pwd):/app/ \
+    hexpm/elixir:1.17.3-erlang-27.1-alpine-3.20.3 \
+    elixir /app/get_entity.exs
 ```
 
 ## PHP
@@ -29,7 +30,10 @@ docker container run --rm -v $(pwd):/app/ hexpm/elixir:1.17.3-erlang-27.1-alpine
 Para os exemplos de PHP, você pode igualmente usar um container docker, como abaixo:
 
 ```shell
-docker container run --rm -v $(pwd):/app/ php:7.4-cli php /app/create_reader.php
+docker container run \
+    --rm -v $(pwd):/app/ \
+    php:7.4-cli \
+    php /app/create_reader.php
 ```
 
 ## Javascript
