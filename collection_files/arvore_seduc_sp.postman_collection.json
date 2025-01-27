@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "b3f00fc6-5f6c-41a7-ab65-1f53076b75a8",
+		"name": "Árvore - SEDUC SP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2339773",
+		"_collection_link": "https://grey-crater-783679.postman.co/workspace/Collections~6b1cccad-abc7-48b1-8882-f8882a888834/collection/2339773-b3f00fc6-5f6c-41a7-ab65-1f53076b75a8?action=share&source=collection_link&creator=2339773"
+	},
+	"item": [
+		{
+			"name": "Professores",
+			"item": [
+				{
+					"name": "Enturmar professor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ExternalId\": 999999999999,\n  \"Nome\": \"Nome professor(a)\",\n  \"Email\": \"email@email.com\",\n  \"CodigoTurma\": 186111613,\n  \"CodigoDisciplina\": 1100,\n  \"NomeDisciplina\": \"LIGUA PORTUGUESA\",\n  \"Login\": \"rg4523669229sp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/seduc_sp/teachers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"seduc_sp",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"var crypto = require('crypto-js')",
+					"",
+					"// Coloque as credenciais aqui",
+					"var access_key = 'access_key';",
+					"var access_key_id = 'access_key_id';",
+					"",
+					"var http_verb = pm.request.method.toUpperCase();",
+					"",
+					"var content_type = 'application/json';",
+					"var body = pm.request.body.raw || '';",
+					"var md5_digest = crypto.MD5(body);",
+					"var content_md5 = crypto.enc.Base64.stringify(md5_digest);",
+					"",
+					"var path = pm.request.url.getPath();",
+					"var query = pm.request.url.getQueryString();",
+					"if (query) {",
+					"    path += '?' + query;",
+					"}",
+					"",
+					"var date = new Date().toUTCString();",
+					"",
+					"var canonical_string = [http_verb, content_type, content_md5, path, date].join(',');",
+					"",
+					"var sha1_signature = crypto.HmacSHA1(canonical_string, access_key);",
+					"var signature = crypto.enc.Base64.stringify(sha1_signature);",
+					"",
+					"var auth_token = 'APIAuth ' + access_key_id + ':' + signature;",
+					"",
+					"",
+					"pm.request.headers.add({key: 'Content-Type', value: content_type});",
+					"pm.request.headers.add({key: 'Content-MD5', value: content_md5});",
+					"pm.request.headers.add({key: 'Date', value: date});",
+					"pm.request.headers.add({key: 'Authorization', value: auth_token});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
