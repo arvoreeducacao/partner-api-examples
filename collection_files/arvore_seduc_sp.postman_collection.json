@@ -1,15 +1,44 @@
 {
 	"info": {
-		"_postman_id": "b3f00fc6-5f6c-41a7-ab65-1f53076b75a8",
+		"_postman_id": "589812a0-4e3c-41f7-be47-5313c620ed57",
 		"name": "Árvore - SEDUC SP",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "2339773",
-		"_collection_link": "https://grey-crater-783679.postman.co/workspace/Collections~6b1cccad-abc7-48b1-8882-f8882a888834/collection/2339773-b3f00fc6-5f6c-41a7-ab65-1f53076b75a8?action=share&source=collection_link&creator=2339773"
+		"_exporter_id": "26741103"
 	},
 	"item": [
 		{
 			"name": "Professores",
 			"item": [
+				{
+					"name": "Criar turma",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"NomeTurma\": \"1ª SERIE A INTEGRAL ANUAL\",\n  \"CodigoTurma\": 11102610,\n  \"CodigoEscola\": 37680,\n  \"Escola\": \"Nome da Escola\",\n  \"CodigoDiretoria\": 10101,\n  \"Diretoria\": \"Nome da Diretoria\",\n  \"CodigoRedeEnsino\": 1,\n  \"RedeEnsino\": \"Estadual\",\n  \"NumeroSerie\": 1,\n  \"NumeroSerieEquivalente\": 1,\n  \"NumeroSerieTurmaMae\": 1,\n  \"TipoEnsino\": \"NOVO ENSINO MÉDIO\",\n  \"CodigoTipoEnsino\": 101,\n  \"CodigoTurno\": 10,\n  \"Turno\": \"MANHA\",\n  \"Categoria\": \"EXATAS\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/seduc_sp/classes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"seduc_sp",
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Enturmar professor",
 					"request": {
@@ -35,6 +64,96 @@
 								"partners",
 								"seduc_sp",
 								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enturmar aluno",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ExternalId\": 66171389,\n  \"Nome\": \"Aluna da Silva\",\n  \"Email\": \"email@email.com\",\n  \"DataNascimento\": \"10/10/1010\",\n  \"CodigoTurma\": 11102610,\n  \"Nickname\": \"ALUNASILVA66171389\",\n  \"RA\": \"000066171389SP\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/seduc_sp/readers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"seduc_sp",
+								"readers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enturmar admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ExternalId\": 1000186111610,\n  \"Nome\": \"MARIA PROFESSORA\",\n  \"Email\": \"email@email.com\",\n  \"Login\": \"rg4523669229sp\",\n  \"Perfil\": \"PEC\",\n  \"CodigoEscola\": [],\n  \"CodigoDiretoria\": [10101, 10102]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/seduc_sp/admins",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"seduc_sp",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desenturmar usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ExternalId\": 66171389,\n  \"CodigoTurma\": 11102610\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v2/partners/seduc_sp/ungroup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"partners",
+								"seduc_sp",
+								"ungroup"
 							]
 						}
 					},
